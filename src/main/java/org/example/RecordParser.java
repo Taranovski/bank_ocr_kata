@@ -1,9 +1,12 @@
 package org.example;
 
+import static org.example.Constants.BOTTOM_TOKEN_SHIFT;
+import static org.example.Constants.MIDDLE_TOKEN_SHIFT;
+import static org.example.Constants.RAW_RECORD_LENGTH;
+import static org.example.Constants.SINGLE_TOKEN_SPAN;
+
 import java.util.HashMap;
 import java.util.Map;
-
-import static org.example.Constants.*;
 
 public class RecordParser {
 
@@ -30,7 +33,7 @@ public class RecordParser {
     }
 
     public boolean hasNextToken() {
-        return currentTokenIndex % 3 == 0 && currentTokenIndex < RECORD_LENGTH && currentTokenIndex * 3 <= RAW_RECORD_LENGTH;
+        return currentTokenIndex < RAW_RECORD_LENGTH;
     }
 
     public char getNextToken() {
@@ -42,7 +45,8 @@ public class RecordParser {
         characters = characters + record.substring(currentTokenIndex + BOTTOM_TOKEN_SHIFT, currentTokenIndex + BOTTOM_TOKEN_SHIFT + SINGLE_TOKEN_SPAN);
 
 //        if (bankOfValidTokens.containsKey(characters)) {
-        currentTokenIndex++;
+        currentTokenIndex += 3;
+
         return bankOfValidTokens.get(characters);
 //        }
         //todo handle exception cases
