@@ -30,7 +30,7 @@ public class RecordParser {
     }
 
     public boolean hasNextToken() {
-        return currentTokenIndex % 3 == 0 && currentTokenIndex < RECORD_LENGTH && currentTokenIndex * 3 <= RAW_RECORD_LENGTH;
+        return currentTokenIndex < RECORD_LENGTH && currentTokenIndex * 3 <= RAW_RECORD_LENGTH;
     }
 
     public char getNextToken() {
@@ -42,7 +42,7 @@ public class RecordParser {
         characters = characters + record.substring(currentTokenIndex + BOTTOM_TOKEN_SHIFT, currentTokenIndex + BOTTOM_TOKEN_SHIFT + SINGLE_TOKEN_SPAN);
 
 //        if (bankOfValidTokens.containsKey(characters)) {
-        currentTokenIndex++;
+        currentTokenIndex += 3;
         return bankOfValidTokens.get(characters);
 //        }
         //todo handle exception cases

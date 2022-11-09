@@ -3,7 +3,7 @@ package org.example
 import spock.lang.Specification
 import spock.lang.Unroll
 
-class OcrReaderTest extends Specification {
+class OcrReaderTest1 extends Specification {
 
     private static final OcrReader reader = new OcrReader();
 
