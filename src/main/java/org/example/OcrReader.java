@@ -11,6 +11,7 @@ public class OcrReader {
 
         while (recordParser.hasNextToken()) {
             stringBuilder.append(recordParser.getNextToken());
+
         }
 
         return stringBuilder.toString();
